@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: UltraStores
+  title: UltraStores
+  author: Speakingevil
+  description: 'UltraStores ver 1.0
+
+    Do you think god stays in heaven because he, too, lives in fear of what he''s
+    created?
+
+
+    Calculate a number based on the serial number and 5D rotations and submit it in
+    balanced ternary using the buttons on the module.
+
+
+    Created by Speakingevil
+
+
+    Based on:
+
+    Simon Stores
+
+    The Ultracbube by Timwi & GHXX'
+  version: 1.0
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: 2fbd047e9f0d1ac45b37250b78564ea0, type: 3}

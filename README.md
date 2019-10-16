@@ -1,1 +1,1 @@
-# UltraStores
+#[ModKit Wiki](../../wiki)
