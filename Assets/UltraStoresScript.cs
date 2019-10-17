@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -21,66 +21,6 @@ public class UltraStoresScript : MonoBehaviour {
 
     private int[][][] rotmatrices = new int[20][][]
     {
-        new int[5][] {new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
-
-        new int[5][] {new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
-
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0, -1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
-
-        new int[5][] {new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
-
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0, -1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
-
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0, -1,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
-
-        new int[5][] {new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 } },
-
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0, -1,  0,  0,  0 } },
-
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0, -1,  0,  0 } },
-
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  0,  0, -1,  0 } },
-
         new int[5][] {new int[5] { 0, -1,  0,  0,  0 },
                       new int[5] { 1,  0,  0,  0,  0 },
                       new int[5] { 0,  0,  1,  0,  0 },
@@ -139,8 +79,67 @@ public class UltraStoresScript : MonoBehaviour {
                       new int[5] { 0,  1,  0,  0,  0 },
                       new int[5] { 0,  0,  1,  0,  0 },
                       new int[5] { 0,  0,  0,  0, -1 },
-                      new int[5] { 0,  0,  0,  1,  0 } },
-    };
+                      new int[5] { 0,  0,  0,  1,  0 }, },
+
+        new int[5][] {new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] {-1,  0,  0,  0,  0 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 } },
+
+        new int[5][] {new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] {-1,  0,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 } },
+
+        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0, -1,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 } },
+
+        new int[5][] {new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] {-1,  0,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 } },
+
+        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0, -1,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 } },
+
+        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
+                      new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  0, -1,  0,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 } },
+
+        new int[5][] {new int[5] { 0,  0,  0,  0,  1 },
+                      new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] {-1,  0,  0,  0,  0 } },
+
+        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0, -1,  0,  0,  0 } },
+
+        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
+                      new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 },
+                      new int[5] { 0,  0,  0,  1,  0 },
+                      new int[5] { 0,  0, -1,  0,  0 } },
+
+        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
+                      new int[5] { 0,  1,  0,  0,  0 },
+                      new int[5] { 0,  0,  1,  0,  0 },
+                      new int[5] { 0,  0,  0,  0,  1 },
+                      new int[5] { 0,  0,  0, -1,  0 }, },};
     private List<string>[][] rotations = new List<string>[2][] {new List<string>[1] { new List<string>{ "XY", "XZ", "YZ", "XW", "YW", "ZW", "XV", "YV", "ZV", "WV", "YX", "ZX", "ZY", "WX", "WY", "WZ", "VX", "VY", "VZ", "VW" } },
                                                         new List<string>[20] { new List<string> { "(XY, XZ)", "(XY, YZ)", "(XY, XW)", "(XY, YW)", "(XY, ZW)", "(XY, XV)", "(XY, YV)", "(XY, ZV)", "(XY, WV)", "(XY, ZX)", "(XY, ZY)", "(XY, WX)", "(XY, WY)", "(XY, WZ)", "(XY, VX)", "(XY, VY)", "(XY, VZ)", "(XY, VW)"},
                                                                          new List<string> { "(XZ, XY)", "(XZ, YZ)", "(XZ, XW)", "(XZ, YW)", "(XZ, ZW)", "(XZ, XV)", "(XZ, YV)", "(XZ, ZV)", "(XZ, WV)", "(XZ, YX)", "(XZ, ZY)", "(XZ, WX)", "(XZ, WY)", "(XZ, WZ)", "(XZ, VX)", "(XZ, VY)", "(XZ, VZ)", "(XZ, VW)"},
@@ -172,7 +171,7 @@ public class UltraStoresScript : MonoBehaviour {
     private List<string> rotlist = new List<string> { };
     private List<string> cycle = new List<string> { };
     private List<string> order = new List<string> { };
-    private string[][] sigdigits = new string[3][] { new string[6] { "R", "G", "B", "C", "M", "Y" }, new string[6] { "Y", "B", "M", "G", "R", "C" }, new string[6] { "M", "R", "Y", "B", "C", "G" } };
+    private string[][] sigdigits = new string[3][] { new string[6] { "R", "G", "B", "C", "M", "Y" }, new string[6] { "Y", "B", "M", "G", "R", "C" }, new string[6] { "M", "C", "R", "Y", "G", "B" } };
     private string[] balter = new string[6];
     private string[] answer = new string[2];
     private bool subwaiting;
@@ -211,13 +210,13 @@ public class UltraStoresScript : MonoBehaviour {
     void Start()
     {
         StartCoroutine(StartCube());
-        if (moduleID == 1)
+        if (moduleID == 0)
         {
             Audio.PlaySoundAtTransform("Klaxon", transform);
         }
         for (int i = 0; i < 3; i++)
         {
-            vals[i][0] = ("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".IndexOf(bomb.GetSerialNumber()[(i + 2) % 6]) * 36 + "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".IndexOf(bomb.GetSerialNumber()[(i + 3) % 6])) % 365;
+            vals[i][0] = ("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".IndexOf(bomb.GetSerialNumber()[(2 * i + 2) % 6]) * 36 + "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".IndexOf(bomb.GetSerialNumber()[(2 * i + 3) % 6])) % 365;
         }
         for (int i = 0; i < 6; i++)
         {
@@ -1349,7 +1348,10 @@ public class UltraStoresScript : MonoBehaviour {
                 foreach (char ch in command)
                 {
                     buttons[cycle.IndexOf(ch.ToString())].OnInteract();
-                    yield return new WaitForSeconds(0.5f);
+                    if (ch != 'W' && ch != 'K')
+                    {
+                        yield return new WaitForSeconds(0.5f);
+                    }
                 }
             }
             else
