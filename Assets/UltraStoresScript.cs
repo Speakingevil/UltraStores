@@ -19,141 +19,247 @@ public class UltraStoresScript : MonoBehaviour {
     public Material[] unlitcols;
     public TextMesh disp;
 
-    private int[][][] rotmatrices = new int[20][][]
+    private int[][][] rotmatrices = new int[30][][]
     {
-        new int[5][] {new int[5] { 0, -1,  0,  0,  0 },
-                      new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 0, -1,  0,  0,  0,  0},
+                      new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 0,  0, -1,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 0,  0, -1,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0, -1,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0, -1,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 0,  0,  0, -1,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 0,  0,  0, -1,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0, -1,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0, -1,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0, -1,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0, -1,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 0,  0,  0,  0, -1 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 1,  0,  0,  0,  0 } },
+        new int[6][] {new int[6] { 0,  0,  0,  0, -1,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0, -1 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0, -1,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0, -1 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0, -1,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  0, -1 },
-                      new int[5] { 0,  0,  0,  1,  0 }, },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0, -1,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 0,  0,  0,  0,  0, -1},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 1,  0,  0,  0,  0,  0} },
 
-        new int[5][] {new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0, -1},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0, -1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0, -1},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0} },
 
-        new int[5][] {new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0, -1},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0, -1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0, -1},
+                      new int[6] { 0,  0,  0,  0,  1,  0} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0, -1,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 } },
+        new int[6][] {new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] {-1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] {-1,  0,  0,  0,  0 } },
+        new int[6][] {new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] {-1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0, -1,  0,  0,  0 } },
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0, -1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  0,  0,  1,  0 },
-                      new int[5] { 0,  0, -1,  0,  0 } },
+        new int[6][] {new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] {-1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
 
-        new int[5][] {new int[5] { 1,  0,  0,  0,  0 },
-                      new int[5] { 0,  1,  0,  0,  0 },
-                      new int[5] { 0,  0,  1,  0,  0 },
-                      new int[5] { 0,  0,  0,  0,  1 },
-                      new int[5] { 0,  0,  0, -1,  0 }, },};
-    private List<string>[][] rotations = new List<string>[2][] {new List<string>[1] { new List<string>{ "XY", "XZ", "YZ", "XW", "YW", "ZW", "XV", "YV", "ZV", "WV", "YX", "ZX", "ZY", "WX", "WY", "WZ", "VX", "VY", "VZ", "VW" } },
-                                                  new List<string>[10] { new List<string> { "(XY, XZ)", "(XY, YZ)", "(XY, XW)", "(XY, YW)", "(XY, ZW)", "(XY, XV)", "(XY, YV)", "(XY, ZV)", "(XY, WV)", "(XY, ZX)", "(XY, ZY)", "(XY, WX)", "(XY, WY)", "(XY, WZ)", "(XY, VX)", "(XY, VY)", "(XY, VZ)", "(XY, VW)"},
-                                                                         new List<string> { "(XZ, XY)", "(XZ, YZ)", "(XZ, XW)", "(XZ, YW)", "(XZ, ZW)", "(XZ, XV)", "(XZ, YV)", "(XZ, ZV)", "(XZ, WV)", "(XZ, YX)", "(XZ, ZY)", "(XZ, WX)", "(XZ, WY)", "(XZ, WZ)", "(XZ, VX)", "(XZ, VY)", "(XZ, VZ)", "(XZ, VW)"},
-                                                                         new List<string> { "(YZ, XW)", "(YZ, YW)", "(YZ, ZW)", "(YZ, XV)", "(YZ, YV)", "(YZ, ZV)", "(YZ, WV)", "(YZ, WX)", "(YZ, WY)", "(YZ, WZ)", "(YZ, VX)", "(YZ, VY)", "(YZ, VZ)", "(YZ, VW)"},
-                                                                         new List<string> { "(XW, XY)", "(XW, XZ)", "(XW, YZ)", "(XW, YW)", "(XW, ZW)", "(XW, XV)", "(XW, YV)", "(XW, ZV)", "(XW, WV)", "(XW, YX)", "(XW, ZX)", "(XW, ZY)", "(XW, WY)", "(XW, WZ)", "(XW, VX)", "(XW, VY)", "(XW, VZ)", "(XW, VW)"},
-                                                                         new List<string> { "(YW, XZ)", "(YW, YZ)", "(YW, ZW)", "(YW, XV)", "(YW, YV)", "(YW, ZV)", "(YW, WV)", "(YW, ZX)", "(YW, ZY)", "(YW, WZ)", "(YW, VX)", "(YW, VY)", "(YW, VZ)", "(YW, VW)"},
-                                                                         new List<string> { "(ZW, XY)", "(ZW, XV)", "(ZW, YV)", "(ZW, ZV)", "(ZW, WV)", "(ZW, YX)", "(ZW, VX)", "(ZW, VY)", "(ZW, VZ)", "(ZW, VW)"},
-                                                                         new List<string> { "(XV, XY)", "(XV, XZ)", "(XV, YZ)", "(XV, XW)", "(XV, YW)", "(XV, ZW)", "(XV, YV)", "(XV, ZV)", "(XV, WV)", "(XV, YX)", "(XV, ZX)", "(XV, ZY)", "(XV, WX)", "(XV, WY)", "(XV, WZ)", "(XV, VY)", "(XV, VZ)", "(XV, VW)"},
-                                                                         new List<string> { "(YV, XZ)", "(YV, YZ)", "(YV, XW)", "(YV, YW)", "(YV, ZW)", "(YV, ZV)", "(YV, WY)", "(YV, WV)", "(YV, ZX)", "(YV, ZY)", "(YV, WX)", "(YV, WZ)", "(YV, VZ)", "(YV, VW)"},
-                                                                         new List<string> { "(ZV, XY)", "(ZV, XW)", "(ZV, YW)", "(ZV, ZW)", "(ZV, WV)", "(ZV, YX)", "(ZV, WX)", "(ZV, WY)", "(ZV, WZ)", "(ZV, VW)"},
-                                                                         new List<string> { "(WV, XY)", "(WV, XZ)", "(WV, YZ)", "(WV, YX)", "(WV, ZX)", "(WV, ZY)"}}};
-    private int[][] gen = new int[32][];
-    private int[][] oldpos = new int[32][] { new int[5] { -1, -1, -1, -1, -1 }, new int[5] { 1, -1, -1, -1, -1 }, new int[5] { -1, 1, -1, -1, -1 }, new int[5] { -1, -1, 1, -1, -1 }, new int[5] { -1, -1, -1, 1, -1 }, new int[5] { -1, -1, -1, -1, 1 }, new int[5] { 1, 1, -1, -1, -1 }, new int[5] { 1, -1, 1, -1, -1 }, new int[5] { 1, -1, -1, 1, -1 }, new int[5] { 1, -1, -1, -1, 1 }, new int[5] { -1, 1, 1, -1, -1 }, new int[5] { -1, 1, -1, 1, -1 }, new int[5] { -1, 1, -1, -1, 1 }, new int[5] { -1, -1, 1, 1, -1 }, new int[5] { -1, -1, 1, -1, 1 }, new int[5] { -1, -1, -1, 1, 1 }, new int[5] { 1, 1, 1, -1, -1 }, new int[5] { 1, 1, -1, 1, -1 }, new int[5] { 1, 1, -1, -1, 1 }, new int[5] { 1, -1, 1, 1, -1 }, new int[5] { 1, -1, 1, -1, 1 }, new int[5] { 1, -1, -1, 1, 1 }, new int[5] { -1, 1, 1, 1, -1 }, new int[5] { -1, 1, 1, -1, 1 }, new int[5] { -1, 1, -1, 1, 1 }, new int[5] { -1, -1, 1, 1, 1 }, new int[5] { 1, 1, 1, 1, -1 }, new int[5] { 1, 1, 1, -1, 1 }, new int[5] { 1, 1, -1, 1, 1 }, new int[5] { 1, -1, 1, 1, 1 }, new int[5] { -1, 1, 1, 1, 1 }, new int[5] { 1, 1, 1, 1, 1 } };
-    private int[][] newpos = new int[32][] { new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5], new int[5] };
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0, -1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0, -1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
+
+        new int[6][] {new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] {-1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0, -1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0, -1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0, -1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1} },
+
+        new int[6][] {new int[6] { 0,  0,  0,  0,  0,  1},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] {-1,  0,  0,  0,  0,  0} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0, -1,  0,  0,  0,  0} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0, -1,  0,  0,  0} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1},
+                      new int[6] { 0,  0,  0,  0,  1,  0},
+                      new int[6] { 0,  0,  0, -1,  0,  0} },
+
+        new int[6][] {new int[6] { 1,  0,  0,  0,  0,  0},
+                      new int[6] { 0,  1,  0,  0,  0,  0},
+                      new int[6] { 0,  0,  1,  0,  0,  0},
+                      new int[6] { 0,  0,  0,  1,  0,  0},
+                      new int[6] { 0,  0,  0,  0,  0,  1},
+                      new int[6] { 0,  0,  0,  0, -1,  0} },
+       };
+    private List<string>[][] rotations = new List<string>[3][] {new List<string>[1] { new List<string>{ "XY", "XZ", "YZ", "XW", "YW", "ZW", "XV", "YV", "ZV", "WV", "XU", "YU", "ZU", "WU", "VU", "YX", "ZX", "ZY", "WX", "WY", "WZ", "VX", "VY", "VZ", "VW", "UX", "UY", "UZ", "UW", "UV" } },
+                                                  new List<string>[15] { new List<string> { "(XY, ZW)", "(XY, ZV)", "(XY, ZU)", "(XY, WV)", "(XY, WU)", "(XY, VU)", "(XY, WZ)", "(XY, VZ)", "(XY, UZ)", "(XY, VW)", "(XY, UW)", "(XY, UV)"},
+                                                                         new List<string> { "(XZ, YW)", "(XZ, YV)", "(XZ, YU)", "(XZ, YV)", "(XZ, WU)", "(XZ, VU)", "(XZ, WY)", "(XZ, VY)", "(XZ, UY)", "(XZ, VW)", "(XZ, UW)", "(XZ, UV)"},
+                                                                         new List<string> { "(YZ, XW)", "(YZ, XV)", "(YZ, XU)", "(YZ, WV)", "(YZ, WU)", "(YZ, VU)", "(YZ, WX)", "(YZ, VX)", "(YZ, UX)", "(YZ, VW)", "(YZ, UW)", "(YZ, UV)"},
+                                                                         new List<string> { "(XW, YZ)", "(XW, YV)", "(XW, YU)", "(XW, ZV)", "(XW, ZU)", "(XW, VU)", "(XW, ZY)", "(XW, VY)", "(XW, UY)", "(XW, VZ)", "(XW, UZ)", "(XW, UV)"},
+                                                                         new List<string> { "(YW, XZ)", "(YW, XV)", "(YW, XU)", "(YW, ZV)", "(YW, ZU)", "(YW, VU)", "(YW, ZX)", "(YW, VX)", "(YW, UX)", "(YW, VZ)", "(YW, UZ)", "(YW, UV)"},
+                                                                         new List<string> { "(ZW, XY)", "(ZW, XV)", "(ZW, XU)", "(ZW, YV)", "(ZW, YU)", "(ZW, VU)", "(ZW, YX)", "(ZW, VX)", "(ZW, VY)", "(ZW, UX)", "(ZW, UY)", "(ZW, UV)"},
+                                                                         new List<string> { "(XV, YZ)", "(XV, YW)", "(XV, YU)", "(XV, ZW)", "(XV, ZU)", "(XV, WU)", "(XV, ZY)", "(XV, WY)", "(XV, WZ)", "(XV, UY)", "(XV, UZ)", "(XV, UW)"},
+                                                                         new List<string> { "(YV, XZ)", "(YV, XW)", "(YV, XU)", "(YV, ZW)", "(YV, ZU)", "(YV, WU)", "(YV, ZX)", "(YV, WX)", "(YV, WZ)", "(YV, UX)", "(YV, UZ)", "(YV, UW)"},
+                                                                         new List<string> { "(ZV, XY)", "(ZV, XW)", "(ZV, XU)", "(ZV, YW)", "(ZV, YU)", "(ZV, WU)", "(ZV, YX)", "(ZV, WX)", "(ZV, WY)", "(ZV, UX)", "(ZV, UY)", "(ZV, UW)"},
+                                                                         new List<string> { "(WV, XY)", "(WV, XZ)", "(WV, XU)", "(WV, YZ)", "(WV, YU)", "(WV, ZU)", "(WV, YX)", "(WV, ZX)", "(WV, UX)", "(WV, ZY)", "(WV, UY)", "(WV, UZ)"},
+                                                                         new List<string> { "(XU, YZ)", "(XU, YW)", "(XU, YV)", "(XU, ZW)", "(XU, ZV)", "(XU, WV)", "(XU, ZY)", "(XU, WY)", "(XU, WZ)", "(XU, VY)", "(XU, VZ)", "(XU, VW)"},
+                                                                         new List<string> { "(YU, XZ)", "(YU, XW)", "(YU, XV)", "(YU, ZW)", "(YU, ZV)", "(YU, WV)", "(YU, ZX)", "(YU, WX)", "(YU, WZ)", "(YU, VY)", "(YU, VZ)", "(YU, VW)"},
+                                                                         new List<string> { "(ZU, XY)", "(ZU, YW)", "(ZU, YV)", "(ZU, XW)", "(ZU, XV)", "(ZU, WV)", "(ZU, YX)", "(ZU, WY)", "(ZU, WX)", "(ZU, VX)", "(ZU, VY)", "(ZU, VW)"},
+                                                                         new List<string> { "(WU, XY)", "(WU, XZ)", "(WU, XV)", "(WU, YZ)", "(WU, YV)", "(WU, ZV)", "(WU, YX)", "(WU, ZX)", "(WU, ZY)", "(WU, VX)", "(WU, VY)", "(WU, VZ)"},
+                                                                         new List<string> { "(VU, XY)", "(VU, XZ)", "(VU, XW)", "(VU, YZ)", "(VU, YW)", "(VU, ZW)", "(VU, YX)", "(VU, ZX)", "(VU, WX)", "(VU, ZY)", "(VU, WY)", "(VU, WZ)"} },
+                                                  new List<string>[10] { new List<string> { "(XY, ZW, VU)", "(XY, ZW, UV)", "(XY, WZ, VU)", "(XY, WZ, UV)", "(XY, ZV, WU)", "(XY, ZV, UW)", "(XY, VZ, WU)", "(XY, VZ, UW)", "(XY, ZU, WV)", "(XY, ZU, VW)", "(XY, UZ, WV)", "(XY, UZ, VW)"},
+                                                                         new List<string> { "(XZ, YW, VU)", "(XZ, YW, UV)", "(XZ, WY, VU)", "(XZ, WY, UV)", "(XZ, YV, WU)", "(XZ, YV, UW)", "(XZ, VY, WU)", "(XZ, VY, UW)", "(XZ, YU, WV)", "(XZ, YU, VW)", "(XZ, UY, WV)", "(XZ, UY, VW)"},
+                                                                         new List<string> { "(XW, YZ, VU)", "(XW, YZ, UV)", "(XW, ZY, VU)", "(XW, ZY, UV)", "(XW, YV, ZU)", "(XW, YV, UZ)", "(XW, VY, ZU)", "(XW, VY, UZ)", "(XW, YU, ZV)", "(XW, YU, VZ)", "(XW, UY, ZV)", "(XW, UY, VZ)"},
+                                                                         new List<string> { "(XV, YZ, WU)", "(XV, YZ, UW)", "(XV, ZY, WU)", "(XV, ZY, UW)", "(XV, YW, ZU)", "(XV, YW, UZ)", "(XV, WY, ZU)", "(XV, WY, UZ)", "(XV, YU, ZW)", "(XV, YU, WZ)", "(XV, UY, ZW)", "(XV, UY, WZ)"},
+                                                                         new List<string> { "(XU, YZ, WV)", "(XU, YZ, VW)", "(XU, ZY, WV)", "(XU, ZY, VW)", "(XU, YW, ZV)", "(XU, YW, VZ)", "(XU, WY, ZV)", "(XU, WY, VZ)", "(XU, YV, ZW)", "(XU, YV, WZ)", "(XU, VY, ZW)", "(XU, VY, WZ)"},
+                                                                         new List<string> { "(YX, ZW, VU)", "(YX, ZW, UV)", "(YX, WZ, VU)", "(YX, WZ, UV)", "(YX, ZV, WU)", "(YX, ZV, UW)", "(YX, VZ, WU)", "(YX, VZ, UW)", "(YX, ZU, WV)", "(YX, ZU, VW)", "(YX, UZ, WV)", "(YX, UZ, VW)"},
+                                                                         new List<string> { "(ZX, YW, VU)", "(ZX, YW, UV)", "(ZX, WY, VU)", "(ZX, WY, UV)", "(ZX, YV, WU)", "(ZX, YV, UW)", "(ZX, VY, WU)", "(ZX, VY, UW)", "(ZX, YU, WV)", "(ZX, YU, VW)", "(ZX, UY, WV)", "(ZX, UY, VW)"},
+                                                                         new List<string> { "(WX, YZ, VU)", "(WX, YZ, UV)", "(WX, ZY, VU)", "(WX, ZY, UV)", "(WX, YV, ZU)", "(WX, YV, UZ)", "(WX, VY, ZU)", "(WX, VY, UZ)", "(WX, YU, ZV)", "(WX, YU, VZ)", "(WX, UY, ZV)", "(WX, UY, VZ)"},
+                                                                         new List<string> { "(VX, YZ, WU)", "(VX, YZ, UW)", "(VX, ZY, WU)", "(VX, ZY, UW)", "(VX, YW, ZU)", "(VX, YW, UZ)", "(VX, WY, ZU)", "(VX, WY, UZ)", "(VX, YU, ZW)", "(VX, YU, WZ)", "(VX, UY, ZW)", "(VX, UY, WZ)"},
+                                                                         new List<string> { "(UX, YZ, WV)", "(UX, YZ, VW)", "(UX, ZY, WV)", "(UX, ZY, VW)", "(UX, YW, ZV)", "(UX, YW, VZ)", "(UX, WY, ZV)", "(UX, WY, VZ)", "(UX, YV, ZW)", "(UX, YV, WZ)", "(UX, VY, ZW)", "(UX, VY, WZ)"},} };
+    private int[][] gen = new int[64][];
+    private int[][] oldpos = new int[64][] { new int[6] { 1, 1, 1, 1, 1, 1 }, new int[6] { -1, 1, 1, 1, 1, 1 }, new int[6] { 1, -1, 1, 1, 1, 1 }, new int[6] { -1, -1, 1, 1, 1, 1 }, new int[6] { 1, 1, -1, 1, 1, 1 }, new int[6] { -1, 1, -1, 1, 1, 1 }, new int[6] { 1, -1, -1, 1, 1, 1 }, new int[6] { -1, -1, -1, 1, 1, 1 }, new int[6] { 1, 1, 1, -1, 1, 1 }, new int[6] { -1, 1, 1, -1, 1, 1 }, new int[6] { 1, -1, 1, -1, 1, 1 }, new int[6] { -1, -1, 1, -1, 1, 1 }, new int[6] { 1, 1, -1, -1, 1, 1 }, new int[6] { -1, 1, -1, -1, 1, 1 }, new int[6] { 1, -1, -1, -1, 1, 1 }, new int[6] { -1, -1, -1, -1, 1, 1 }, new int[6] { 1, 1, 1, 1, -1, 1 }, new int[6] { -1, 1, 1, 1, -1, 1 }, new int[6] { 1, -1, 1, 1, -1, 1 }, new int[6] { -1, -1, 1, 1, -1, 1 }, new int[6] { 1, 1, -1, 1, -1, 1 }, new int[6] { -1, 1, -1, 1, -1, 1 }, new int[6] { 1, -1, -1, 1, -1, 1 }, new int[6] { -1, -1, -1, 1, -1, 1 }, new int[6] { 1, 1, 1, -1, -1, 1 }, new int[6] { -1, 1, 1, -1, -1, 1 }, new int[6] { 1, -1, 1, -1, -1, 1 }, new int[6] { -1, -1, 1, -1, -1, 1 }, new int[6] { 1, 1, -1, -1, -1, 1 }, new int[6] { -1, 1, -1, -1, -1, 1 }, new int[6] { 1, -1, -1, -1, -1, 1 }, new int[6] { -1, -1, -1, -1, -1, 1 }, new int[6] { 1, 1, 1, 1, 1, -1 }, new int[6] { -1, 1, 1, 1, 1, -1 }, new int[6] { 1, -1, 1, 1, 1, -1 }, new int[6] { -1, -1, 1, 1, 1, -1 }, new int[6] { 1, 1, -1, 1, 1, -1 }, new int[6] { -1, 1, -1, 1, 1, -1 }, new int[6] { 1, -1, -1, 1, 1, -1 }, new int[6] { -1, -1, -1, 1, 1, -1 }, new int[6] { 1, 1, 1, -1, 1, -1 }, new int[6] { -1, 1, 1, -1, 1, -1 }, new int[6] { 1, -1, 1, -1, 1, -1 }, new int[6] { -1, -1, 1, -1, 1, -1 }, new int[6] { 1, 1, -1, -1, 1, -1 }, new int[6] { -1, 1, -1, -1, 1, -1 }, new int[6] { 1, -1, -1, -1, 1, -1 }, new int[6] { -1, -1, -1, -1, 1, -1 }, new int[6] { 1, 1, 1, 1, -1, -1 }, new int[6] { -1, 1, 1, 1, -1, -1 }, new int[6] { 1, -1, 1, 1, -1, -1 }, new int[6] { -1, -1, 1, 1, -1, -1 }, new int[6] { 1, 1, -1, 1, -1, -1 }, new int[6] { -1, 1, -1, 1, -1, -1 }, new int[6] { 1, -1, -1, 1, -1, -1 }, new int[6] { -1, -1, -1, 1, -1, -1 }, new int[6] { 1, 1, 1, -1, -1, -1 }, new int[6] { -1, 1, 1, -1, -1, -1 }, new int[6] { 1, -1, 1, -1, -1, -1 }, new int[6] { -1, -1, 1, -1, -1, -1 }, new int[6] { 1, 1, -1, -1, -1, -1 }, new int[6] { -1, 1, -1, -1, -1, -1 }, new int[6] { 1, -1, -1, -1, -1, -1 }, new int[6] { -1, -1, -1, -1, -1, -1 } };
+    private int[][] newpos = new int[64][];
     private int[][] vals = new int[3][] { new int[5], new int[5], new int[6] };
     private int D;
     private List<int[][]> matrixlist = new List<int[][]> { };
@@ -167,12 +273,14 @@ public class UltraStoresScript : MonoBehaviour {
     private bool submissable;
     private bool[] alreadypressed = new bool[8];
     private bool neginput;
+    private bool recol;
+    private bool randrecol;
     private int stage;
     private string[] funcseq = new string[5];
     private string[] funccatch = new string[4];
     private int sound;
 
-    private static int moduleIDCounter;
+    private static int moduleIDCounter = 1;
     private int moduleID;
     private bool moduleSolved;
 
@@ -289,6 +397,21 @@ public class UltraStoresScript : MonoBehaviour {
                     }
                 }
             }
+            else if(recol == false)
+            {
+                if (b == 0)
+                {
+                    recol = true;
+                    randrecol = false;
+                    StartCoroutine(Recolour());
+                }
+                else if(b == 4)
+                {
+                    recol = true;
+                    randrecol = true;
+                    StartCoroutine(Recolour());
+                }
+            }
         }
     }
 
@@ -296,7 +419,7 @@ public class UltraStoresScript : MonoBehaviour {
     {
         matrixlist.Clear();
         rotlist.Clear();
-        List<int> selector = new List<int> { 0, 0, 0, 0, 1 };
+        List<int> selector = new List<int> { 0, 0, 0, 0, 0, 1, 2 };
         for(int i = 0; i < stage + 3; i++)
         {
             int r = Random.Range(0, selector.Count);
@@ -309,41 +432,53 @@ public class UltraStoresScript : MonoBehaviour {
                 matrixlist.Add(rotmatrices[g]);
                 vals[stage][i + 1] = SingRot(vals[stage][i], i, stage, g);
             }
-            else
+            else if (s == 1)
             {
-                int[] g = new int[2] { Random.Range(0, 10), 0 };
-                g[1] = Random.Range(0, rotations[1][g[0]].Count());
+                int[] g = new int[2] { Random.Range(0, 15), Random.Range(0, 12) };
                 string pair = rotations[1][g[0]][g[1]];
                 rotlist.Add(pair);
                 string[] indrot = new string[2] { string.Join(string.Empty, new string[2] {pair[1].ToString(), pair[2].ToString()}), string.Join(string.Empty, new string[2] { pair[5].ToString(), pair[6].ToString() } )};
-                Debug.Log("(" + indrot[0] + ", " + indrot[1] + ")");
                 int[][][] mat = new int[2][][] { rotmatrices[rotations[0][0].IndexOf(indrot[0])], rotmatrices[rotations[0][0].IndexOf(indrot[1])] };
-                MatrixMultiply(mat[0], mat[1]);
+                matrixlist.Add(MatrixMultiply(mat[0], mat[1]));
                 int[] rs = new int[3] { rotations[0][0].IndexOf(indrot[0]), rotations[0][0].IndexOf(indrot[1]), 0 };
-                for(int j = 0; j < 6; j++)
+
+                List<char> reductor = new List<char> { 'X', 'Y', 'Z', 'W', 'V', 'U'};
+                for (int k = 0; k < pair.Length; k++)
                 {
-                    if (j < 5)
+                    if (reductor.Contains(pair[k]))
                     {
-                        if (indrot[0].Contains("XYZWV"[j]) && indrot[1].Contains("XYZWV"[j]))
-                        {
-                            rs[2] = j;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        List<char> reductor = new List<char> { 'X', 'Y', 'Z', 'W', 'V'};
-                        for (int k = 0; k < pair.Length; k++)
-                        {
-                            if (reductor.Contains(pair[k]))
-                            {
-                                reductor.Remove(pair[k]);
-                            }
-                        }
-                        rs[2] = "XYZWV".IndexOf(reductor[0].ToString());
+                        reductor.Remove(pair[k]);
                     }
                 }
+                if("XYZ".Contains(reductor[0]) && "XYZ".Contains(reductor[1]))
+                {
+                    rs[2] = 0;
+                }
+                else if ("WVU".Contains(reductor[0]) && "WVU".Contains(reductor[1]))
+                {
+                    rs[2] = 2;
+                }
+                else
+                {
+                    rs[2] = 1;
+                }
+
                 vals[stage][i + 1] = DualRot(vals[stage][i], i, stage, rs);
+            }
+            else
+            {
+                int[] g = new int[2] { Random.Range(0, 10), Random.Range(0, 12) };
+                string triplet = rotations[2][g[0]][g[1]];
+                rotlist.Add(triplet);
+                string[] indrot = new string[3] { string.Join(string.Empty, new string[2] { triplet[1].ToString(), triplet[2].ToString() }), string.Join(string.Empty, new string[2] { triplet[5].ToString(), triplet[6].ToString() }), string.Join(string.Empty, new string[2] { triplet[9].ToString(), triplet[10].ToString() })};
+                int[][][] mat = new int[3][][] { rotmatrices[rotations[0][0].IndexOf(indrot[0])], rotmatrices[rotations[0][0].IndexOf(indrot[1])], rotmatrices[rotations[0][0].IndexOf(indrot[2])] };
+                matrixlist.Add(MatrixMultiply(MatrixMultiply(mat[0], mat[1]), mat[2]));
+                int[] rs = new int[4] { rotations[0][0].IndexOf(indrot[0]), rotations[0][0].IndexOf(indrot[1]), rotations[0][0].IndexOf(indrot[2]), 0 };
+                if(indrot[0] == "XY" || indrot[0] == "YX" || indrot[0] == "XZ" || indrot[0] == "ZX" || indrot[1] == "YZ" || indrot[1] == "ZY")
+                {
+                    rs[3] = 1;
+                }
+                vals[stage][i + 1] = TripRot(vals[stage][i], i, stage, rs);
             }
         }
         Debug.LogFormat("[UltraStores #{0}]The rotations for stage {1} are: {2}", moduleID, stage, string.Join(" - ", rotlist.ToArray()));
@@ -377,44 +512,35 @@ public class UltraStoresScript : MonoBehaviour {
         Debug.LogFormat("[UltraStores #{0}]{1} in balanced ternary is {2}", moduleID, vals[stage][stage + 3], string.Join(string.Empty, balter));
     }
 
-    private void MatrixMultiply(int[][] a, int[][] b)
+    private int[][] MatrixMultiply(int[][] a, int[][] b)
     {
-        int[][] prod = new int[5][] { new int[5], new int[5], new int[5], new int[5], new int[5]};
-        string[][] prodl = new string[5][] { new string[5], new string[5], new string[5], new string[5], new string[5] };
-        string[] prodlo = new string[5];
-        for(int i = 0; i < 5; i++)
+        int[][] prod = new int[6][] { new int[6], new int[6], new int[6], new int[6], new int[6], new int[6]};
+        for(int i = 0; i < 6; i++)
         {
-            for(int j = 0; j < 5; j++)
+            for (int j = 0; j < 6; j++)
             {
                 int n = 0;
-                for(int k = 0; k < 5; k++)
+                for (int k = 0; k < 6; k++)
                 {
                     n += a[i][k] * b[k][j];
                 }
                 prod[i][j] = n;
-                prodl[i][j] = n.ToString();
             }
-            prodlo[i] = string.Join(" ", prodl[i]);
         }
-        Debug.Log(string.Join("\n", prodlo));
-        matrixlist.Add(prod);
+        return prod;
     }
 
     private void VectorMultiply(int[][] a, int[] b, int c)
     {
-        int[] prod = new int[5];
-        string[] bl = new string[5];
-        string[] prodl = new string[5];
-        for (int i = 0; i < 5; i++)
+        int[] prod = new int[6];
+        for (int i = 0; i < 6; i++)
         {
             int n = 0;
-            bl[i] = b[i].ToString();
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 6; j++)
             {
                 n += a[i][j] * b[j];               
             }
             prod[i] = n;
-            prodl[i] = n.ToString();
         }
         newpos[c] = prod;
     }
@@ -445,15 +571,15 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x = x * 2 - D;
+                        x = (x * 2) - D;
                         funcseq[i] = "XZ(" + v + ") = " + v + "*2" + " - " + D + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = x * 2 - vals[0][i];
+                        x = (x * 2) - vals[0][i];
                         funcseq[i] = "XZ(" + v + ") = " + v + "*2" + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = x * 2 - vals[1][i] - vals[0][i];
+                        x = (x * 2) - vals[1][i] - vals[0][i];
                         funcseq[i] = "XZ(" + v + ") = " + v + "*2" + " - " + vals[1][i] + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -470,7 +596,7 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "YZ(" + v + ") = " + v + " + " + vals[0][i] + "*2" + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x += 2 * vals[1][i] - vals[0][i];
+                        x += (2 * vals[1][i]) - vals[0][i];
                         funcseq[i] = "YZ(" + v + ") = " + v + " + " + vals[1][i] + "*2" + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -479,15 +605,15 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x = 2 * D - x;
+                        x = (2 * D) - x;
                         funcseq[i] = "XW(" + v + ") = " + D + "*2" + " - " + v + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 3 * D - x - vals[0][i];
+                        x = (3 * D) - x - vals[0][i];
                         funcseq[i] = "XW(" + v + ") = " + D + "*3" + " - " + v + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 4 * D - x - vals[1][i] - vals[0][i];
+                        x = (4 * D) - x - vals[1][i] - vals[0][i];
                         funcseq[i] = "XW(" + v + ") = " + D + "*4" + " - " + v + " - " + vals[1][i] + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -496,15 +622,15 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x = 2 * x + D - 35 * (i + 1);
+                        x = (2 * x) + D - (35 * (i + 1));
                         funcseq[i] = "YW(" + v + ") = " + v + "*2" + " + " + D + " - 35*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 2 * x + Mathf.Abs(vals[0][i]) - 12 * (int)Mathf.Pow(i + 1, 2);
+                        x = (2 * x) + Mathf.Abs(vals[0][i]) - (12 * (int)Mathf.Pow(i + 1, 2));
                         funcseq[i] = "YW(" + v + ") = " + v + "*2" + " + |" + vals[0][i] + "| - 12*(" + (i + 1) + "^2) = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 2 * x + Mathf.Abs(vals[1][i]) + Mathf.Abs(vals[0][i]) - 5 * (int)Mathf.Pow(i + 1, 3);
+                        x = (2 * x) + Mathf.Abs(vals[1][i]) + Mathf.Abs(vals[0][i]) - (5 * (int)Mathf.Pow(i + 1, 3));
                         funcseq[i] = "YW(" + v + ") = " + v + "*2" + " + |" + vals[1][i] + "| + |" + vals[0][i] + "| - 5*(" + (i + 1) + "^3) = " + x + " ≈ " + (x + 7300) % 365;
                         break;
                 }
@@ -534,11 +660,11 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "XV(" + v + ") = " + "( " + D + " - " + v + " )*2 = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 2 * x - 3 * (D - vals[0][i]);
+                        x = (2 * x) - (3 * (D - vals[0][i]));
                         funcseq[i] = "XV(" + v + ") = " + v + "*2 - " + "( " + D + " - " + vals[0][i] + " )*3 = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 2 * x - 4 * (D - vals[1][i]);
+                        x = (2 * x) - (4 * (D - vals[1][i]));
                         funcseq[i] = "XV(" + v + ") = " + v + "*2 - " + "( " + D + " - " + vals[1][i] + " )*4 = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -547,15 +673,15 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x += (int)Mathf.Pow(D % 6, 3) - 35 * (i + 1);
+                        x += (int)Mathf.Pow(D % 6, 3) - (35 * (i + 1));
                         funcseq[i] = "YV(" + v + ") = " + v + " + " + (D % 6) + "^3 - 35*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x += (int)Mathf.Pow((vals[0][i] + 700) % 7, 3) - 12 * (int)Mathf.Pow(i + 1, 2);
+                        x += (int)Mathf.Pow((vals[0][i] + 700) % 7, 3) - (12 * (int)Mathf.Pow(i + 1, 2));
                         funcseq[i] = "YV(" + v + ") = " + v + " + " + (vals[0][i] + 700) % 6 + "^3 - 12*(" + (i + 1) + "^2) = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x += (int)Mathf.Pow((vals[1][i] + 800) % 8, 3) - 5 * (int)Mathf.Pow(i + 1, 3);
+                        x += (int)Mathf.Pow((vals[1][i] + 800) % 8, 3) - (5 * (int)Mathf.Pow(i + 1, 3));
                         funcseq[i] = "YV(" + v + ") = " + v + " + " + (vals[1][i] + 800) % 8 + "^3 - 5*(" + (i + 1) + "^3) = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -564,15 +690,15 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x = D + (x - (x + 730) % 2) / 2;
+                        x = D + ((x - (x + 730) % 2) / 2);
                         funcseq[i] = "ZV(" + v + ") = " + (v - (v + 730) % 2) / 2 + " + " + D + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x += (x - (x + 730) % 2) / 2 - vals[0][i];
+                        x += ((x - (x + 730) % 2) / 2) - vals[0][i];
                         funcseq[i] = "ZV(" + v + ") = " + v + " + " + (v - (v + 730) % 2) / 2 + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 2 * vals[1][i] + (x - (x + 365 * (i + 1)) % (i + 1)) / (i + 1);
+                        x = (2 * vals[1][i]) + (x - (x + 365 * (i + 1)) % (i + 1)) / (i + 1);
                         funcseq[i] = "ZV(" + v + ") = " + (v - (v + 365 * (i + 1)) % (i + 1)) / (i + 1) + " + " + vals[1][i] + "*2 = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -581,20 +707,105 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x = 5 * x - 3 * D;
+                        x = (5 * x) - (3 * D);
                         funcseq[i] = "WV(" + v + ") = " + v + "*5 - " + D + "*3 = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 8 * x - 5 * D + 3 * vals[0][i];
+                        x = (8 * x) - (5 * D) + (3 * vals[0][i]);
                         funcseq[i] = "WV(" + v + ") = " + v + "*8 - " + D + "*5 + " + vals[0][i] + "*3 = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 13 * x - 8 * D + 5 * vals[0][1] - 3 * vals[1][i];
+                        x = (13 * x) - (8 * D) + (5 * vals[0][i]) - (3 * vals[1][i]);
                         funcseq[i] = "WV(" + v + ") = " + v + "*13 - " + D + "*8 + " + vals[0][i] + "*5 - " + vals[1][i] + "*3 = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
             case 10:
+                switch (j)
+                {
+                    case 0:
+                        x += 365 - D;
+                        funcseq[i] = "XU(" + v + ") = " + v + " + 365 - " + D + " = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x += 365 - Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "XU(" + v + ") = " + v + " + 365 - |" + vals[0][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x += 365 - Mathf.Abs(vals[0][i]) - Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "XU(" + v + ") = " + v + " + 365 - |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 11:
+                switch (j)
+                {
+                    case 0:
+                        x =  2 * x - 365 + D;
+                        funcseq[i] = "YU(" + v + ") = " + v + "*2 - 365 + " + D + " = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x = 2 * x - 365 + Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "YU(" + v + ") = " + v + "*2 - 365 + |" + vals[0][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x = 2 * x - 365 + Mathf.Abs(vals[0][i]) + Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "YU(" + v + ") = " + v + "*2 - 365 + |" + vals[0][i] + "| + |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 12:
+                switch (j)
+                {
+                    case 0:
+                        x += 365 - 2 * D;
+                        funcseq[i] = "ZU(" + v + ") = " + v + " + 365 - " + D + "*2 = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x += 365 - 2 * Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "ZU(" + v + ") = " + v + " + 365 - |" + vals[0][i] + "|*2 = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x += 365 - 2 * Mathf.Abs(vals[0][i]) - 2 * Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "ZU(" + v + ") = " + v + " + 365 - |" + vals[0][i] + "|*2 - |" + vals[1][i] + "|*2 = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 13:
+                switch (j)
+                {
+                    case 0:
+                        x = 365 - Mathf.Abs(x);
+                        funcseq[i] = "WU(" + v + ") = 365 - |" + v + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x = 365 - Mathf.Abs(x) - Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "WU(" + v + ") = 365 - |" + v + "| - |" + vals[0][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x = 365 - Mathf.Abs(x) - Mathf.Abs(vals[0][i]) - Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "WU(" + v + ") = 365 - |" + v + "| - |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 14:
+                switch (j)
+                {
+                    case 0:
+                        x = (i + 1)*x;
+                        funcseq[i] = "VU(" + v + ") = " + v + "*" + (i + 1) + " = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x = (i + 1) * (x - vals[0][i]);
+                        funcseq[i] = "VU(" + v + ") = (" + v + " - " + vals[0][i] + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x = (i + 1) * (x - vals[0][i] + vals[1][0]);
+                        funcseq[i] = "VU(" + v + ") = (" + v + " - " + vals[0][i] + " + " + vals[1][i] + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 15:
                 switch (j)
                 {
                     case 0:
@@ -611,24 +822,24 @@ public class UltraStoresScript : MonoBehaviour {
                         break;
                 }
                 break;
-            case 11:
+            case 16:
                 switch (j)
                 {
                     case 0:
-                        x = x * 2 + D;
+                        x = (x * 2) + D;
                         funcseq[i] = "ZX(" + v + ") = " + v + "*2" + " + " + D + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = x * 2 - vals[0][i];
-                        funcseq[i] = "ZX(" + v + ") = " + v + "*2" + " - " + D + " = " + x + " ≈ " +x % 365;
+                        x = (x * 2) + vals[0][i];
+                        funcseq[i] = "ZX(" + v + ") = " + v + "*2" + " + " + D + " = " + x + " ≈ " +x % 365;
                         break;
                     default:
-                        x = vals[1][i] + vals[0][i] - 2 * x;
+                        x = vals[1][i] + vals[0][i] - (2 * x);
                         funcseq[i] = "ZX(" + v + ") = " + vals[1][i] + " + " + vals[0][i] + " - " + v + "*2 = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 12:
+            case 17:
                 switch (j)
                 {
                     case 0:
@@ -640,12 +851,12 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "ZY(" + v + ") = " + v + " - " + vals[0][i] + "*2" + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x += 2 * vals[0][i] - vals[1][i];
+                        x += (2 * vals[0][i]) - vals[1][i];
                         funcseq[i] = "ZY(" + v + ") = " + v + " + " + vals[0][i] + "*2 - " + vals[1][i] + " = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 13:
+            case 18:
                 switch (j)
                 {
                     case 0:
@@ -653,33 +864,33 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "WX(" + v + ") = " + v + " + " + D + "*2" + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x += 3 * D - vals[0][i];
+                        x += (3 * D) - vals[0][i];
                         funcseq[i] = "WX(" + v + ") = " + v + " + " + D + "*3" + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x += 4 * D - vals[1][i] - vals[0][i];
+                        x += (4 * D) - vals[1][i] - vals[0][i];
                         funcseq[i] = "WX(" + v + ") = " + v + " + " + D + "*4" + " - " + vals[1][i] + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 14:
+            case 19:
                 switch (j)
                 {
                     case 0:
-                        x = 2 * x - D - 35 * (i + 1);
+                        x = (2 * x) - D - 35 * (i + 1);
                         funcseq[i] = "WY(" + v + ") = " + v + "*2 - " + D + " - 35*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 2 * x - Mathf.Abs(vals[0][i]) - 12 * (int)Mathf.Pow(i + 1, 2);
+                        x = (2 * x) - Mathf.Abs(vals[0][i]) - (12 * (int)Mathf.Pow(i + 1, 2));
                         funcseq[i] = "WY(" + v + ") = " + v + "*2" + " - |" + vals[0][i] + "| - 12*(" + (i + 1) + "^2) = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 2 * x - Mathf.Abs(vals[1][i]) - Mathf.Abs(vals[0][i]) - 5 * (int)Mathf.Pow(i + 1, 3);
+                        x = (2 * x) - Mathf.Abs(vals[1][i]) - Mathf.Abs(vals[0][i]) - (5 * (int)Mathf.Pow(i + 1, 3));
                         funcseq[i] = "WY(" + v + ") = " + v + "*2" + " - |" + vals[1][i] + "| - |" + vals[0][i] + "| - 5*(" + (i + 1) + "^3) = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 15:
+            case 20:
                 switch (j)
                 {
                     case 0:
@@ -696,7 +907,7 @@ public class UltraStoresScript : MonoBehaviour {
                         break;
                 }
                 break;
-            case 16:
+            case 21:
                 switch (j)
                 {
                     case 0:
@@ -704,63 +915,148 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "VX(" + v + ") = " + "( " + D + " + " + v + " )*2 = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 2 * x - 3 * (D + vals[0][i]);
+                        x = (2 * x) - (3 * (D + vals[0][i]));
                         funcseq[i] = "VX(" + v + ") = " + v + "*2 - " + "( " + D + " + " + vals[0][i] + " )*3 = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 2 * x - 4 * (D + vals[1][i]);
+                        x = (2 * x) - (4 * (D + vals[1][i]));
                         funcseq[i] = "VX(" + v + ") = " + v + "*2 - " + "( " + D + " + " + vals[1][i] + " )*4 = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 17:
+            case 22:
                 switch (j)
                 {
                     case 0:
-                        x -= (int)Mathf.Pow(D % 6, 3) + 35 * (i + 1);
+                        x -= (int)Mathf.Pow(D % 6, 3) + (35 * (i + 1));
                         funcseq[i] = "VY(" + v + ") = " + v + " - " + (D % 6) + "^3 - 35*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x -= (int)Mathf.Pow((vals[0][i] + 700) % 7, 3) + 12 * (int)Mathf.Pow(i + 1, 2);
+                        x -= (int)Mathf.Pow((vals[0][i] + 700) % 7, 3) + (12 * (int)Mathf.Pow(i + 1, 2));
                         funcseq[i] = "VY(" + v + ") = " + v + " - " + (vals[0][i] + 700) % 6 + "^3 - 12*(" + (i + 1) + "^2) = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x -= (int)Mathf.Pow((vals[1][i] + 800) % 8, 3) + 5 * (int)Mathf.Pow(i + 1, 3);
+                        x -= (int)Mathf.Pow((vals[1][i] + 800) % 8, 3) + (5 * (int)Mathf.Pow(i + 1, 3));
                         funcseq[i] = "VY(" + v + ") = " + v + " - " + (vals[1][i] + 800) % 8 + "^3 - 5*(" + (i + 1) + "^3) = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 18:
+            case 23:
                 switch (j)
                 {
                     case 0:
-                        x = (x - (x + 730) % 2) / 2 - D;
+                        x = ((x - ((x + 730) % 2)) / 2) - D;
                         funcseq[i] = "VZ(" + v + ") = " + (v - (v + 730) % 2) / 2 + " - " + D + " = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x += vals[0][i] + (x - (x + 730) % 2) / 2;
+                        x += vals[0][i] + ((x - ((x + 730) % 2)) / 2);
                         funcseq[i] = "VZ(" + v + ") = " + v + " + " + (v - (v + 730) % 2) / 2 + " + " + vals[0][i] + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = (x - (x + 365 * (i + 1)) % (i + 1)) / (i + 1) - 2 * vals[1][0];
+                        x = (x - (x + (365 * (i + 1))) % (i + 1)) / (i + 1) - (2 * vals[1][i]);
                         funcseq[i] = "VZ(" + v + ") = " + (v - (v + 365 * (i + 1)) % (i + 1)) / (i + 1) + " - " + vals[1][i] + "*2 = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
-            case 19:
+            case 24:
                 switch (j)
                 {
                     case 0:
-                        x = 5 * x + 3 * D;
+                        x = (5 * x) + (3 * D);
                         funcseq[i] = "VW(" + v + ") = " + v + "*5 + " + D + "*3 = " + x + " ≈ " + x % 365;
                         break;
                     case 1:
-                        x = 8 * x + 5 * D - 3 * vals[0][i];
+                        x = (8 * x)+ (5 * D) - (3 * vals[0][i]);
                         funcseq[i] = "VW(" + v + ") = " + v + "*8 + " + D + "*5 - " + vals[0][i] + "*3 = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = 13 * x + 8 * D - 5 * vals[0][1] + 3 * vals[1][i];
+                        x = (13 * x) + (8 * D) - (5 * vals[0][i]) + (3 * vals[1][i]);
                         funcseq[i] = "VW(" + v + ") = " + v + "*13 + " + D + "*8 - " + vals[0][i] + "*5 + " + vals[1][i] + "*3 = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 25:
+                switch (j)
+                {
+                    case 0:
+                        x -= 365 + D;
+                        funcseq[i] = "UX(" + v + ") = " + v + " - 365 - " + D + " = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x -= 365 + Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "UX(" + v + ") = " + v + " - 365 - |" + vals[0][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x -= 365 - Mathf.Abs(vals[0][i]) + Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "UX(" + v + ") = " + v + " - 365 + |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 26:
+                switch (j)
+                {
+                    case 0:
+                        x = 2 * x - 365 - D;
+                        funcseq[i] = "UY(" + v + ") = " + v + "*2 - 365 - " + D + " = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x = 2 * x - 365 - Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "UY(" + v + ") = " + v + "*2 - 365 - |" + vals[0][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x = 2 * x - 365 + Mathf.Abs(vals[0][i]) - Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "UY(" + v + ") = " + v + "*2 + 365 - |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 27:
+                switch (j)
+                {
+                    case 0:
+                        x += 365 + 2 * D;
+                        funcseq[i] = "UZ(" + v + ") = " + v + " + 365 - " + D + "*2 = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x += 365 + 2 * Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "UZ(" + v + ") = " + v + " + 365 + |" + vals[0][i] + "|*2 = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x += 365 + 2 * Mathf.Abs(vals[0][i]) - 2 * Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "UZ(" + v + ") = " + v + " + 365 + |" + vals[0][i] + "|*2 - |" + vals[1][i] + "|*2 = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 28:
+                switch (j)
+                {
+                    case 0:
+                        x = 365 - 2 * Mathf.Abs(x);
+                        funcseq[i] = "UW(" + v + ") = 365 - |" + v + "|*2 = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x = 365 - 2 * Mathf.Abs(x) - Mathf.Abs(vals[0][i]);
+                        funcseq[i] = "UW(" + v + ") = 365 - |" + v + "|*2 - |" + vals[0][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x = 365 - 2 * Mathf.Abs(x) - Mathf.Abs(vals[0][i]) - Mathf.Abs(vals[1][i]);
+                        funcseq[i] = "UW(" + v + ") = 365 - |" + v + "|*2 - |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        break;
+                }
+                break;
+            case 29:
+                switch (j)
+                {
+                    case 0:
+                        x = (i + 1) * x - D;
+                        funcseq[i] = "UV(" + v + ") = " + v + "*" + (i + 1) + " - " + D + " = " + x + " ≈ " + x % 365;
+                        break;
+                    case 1:
+                        x = (i + 1) * (x - vals[0][i] - D);
+                        funcseq[i] = "UV(" + v + ") = (" + v + " - " + vals[0][i] + " - " + D + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
+                        break;
+                    default:
+                        x = (i + 1) * (x - vals[0][i] - vals[1][0]);
+                        funcseq[i] = "UV(" + v + ") = (" + v + " - " + vals[0][i] + " - " + vals[1][i] + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
@@ -782,15 +1078,15 @@ public class UltraStoresScript : MonoBehaviour {
                 {
                     case 0:
                         x = 2 * D - Mathf.Abs(SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]));
-                        funcseq[i] = "X(" + v + ") = 2*" + D + " - |[" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        funcseq[i] = "X(" + v + ") = 2*" + D + " - |[" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                     case 1:
                         x = 3 * D - Mathf.Abs(SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]));
-                        funcseq[i] = "X(" + v + ") = 3*" + D + " - |[" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        funcseq[i] = "X(" + v + ") = 3*" + D + " - |[" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                     case 2:
                         x = 4 * D - Mathf.Abs(SingRot(x, i, j, k[0])) - Mathf.Abs(SingRot(x, i, j, k[1]));
-                        funcseq[i] = "X(" + v + ") = 4*" + D + " - |[" + SingRot(v, i, j, k[0]) + "]| + |[" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        funcseq[i] = "X(" + v + ") = 4*" + D + " - |[" + SingRot(v, i, j, k[0]) + "]| + |[" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                 }
                 break;
@@ -798,16 +1094,16 @@ public class UltraStoresScript : MonoBehaviour {
                 switch (j)
                 {
                     case 0:
-                        x = D - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]);
-                        funcseq[i] = "Y(" + v + ") = " + D + " - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        x = 2 * D - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]);
+                        funcseq[i] = "Y(" + v + ") = " + D + "*2 - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                     case 1:
-                        x = vals[0][i] - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]);
-                        funcseq[i] = "Y(" + v + ") = " + vals[0][i] + " - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        x = 2 * vals[0][i] - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]);
+                        funcseq[i] = "Y(" + v + ") = " + vals[0][i] + "*2 - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                     case 2:
-                        x = vals[1][i] - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]);
-                        funcseq[i] = "Y(" + v + ") = " + vals[1][i] + " - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        x = 2 * vals[1][i] - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]);
+                        funcseq[i] = "Y(" + v + ") = " + vals[1][i] + "*2 - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                 }
                 break;
@@ -816,68 +1112,66 @@ public class UltraStoresScript : MonoBehaviour {
                 {
                     case 0:
                         x = SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]) - x;
-                        funcseq[i] = "Z(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] - " + v + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        funcseq[i] = "Z(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] - " + v + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                     case 1:
                         x = SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]) - x - vals[0][i];
-                        funcseq[i] = "Z(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] - " + v + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        funcseq[i] = "Z(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] - " + v + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                     case 2:
                         x = SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]) - x - vals[1][i] - vals[0][i];
-                        funcseq[i] = "Z(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] - " + v + " - " + vals[1][i] + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
+                        funcseq[i] = "Z(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] - " + v + " - " + vals[1][i] + " - " + vals[0][i] + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                 }
                 break;
-            case 3:
-                switch (j)
-                {
-                    case 0:
-                        x = SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]);
-                        funcseq[i] = "W(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
-                        break;
-                    case 1:
-                        SingRot(v + vals[0][i], i, j, k[0]);
-                        funccatch[0] = funcseq[i];
-                        SingRot(v + vals[0][i], i, j, k[1]);
-                        funccatch[1] = funcseq[i];
-                        x = SingRot(x + vals[0][i], i, j, k[0]) + SingRot(x + vals[0][i], i, j, k[1]);
-                        funcseq[i] = "W(" + v + ") = [" + SingRot(v + vals[0][i], i, j, k[0]) + "] + [" + SingRot(v + vals[0][i], i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
-                        break;
-                    case 2:
-                        SingRot(v + vals[1][i] + vals[0][i], i, j, k[0]);
-                        funccatch[0] = funcseq[i];
-                        SingRot(v + vals[1][i] + vals[0][i], i, j, k[1]);
-                        funccatch[1] = funcseq[i];
-                        x = SingRot(x + vals[1][i] + vals[0][i], i, j, k[0]) + SingRot(x + vals[1][i] + vals[0][i], i, j, k[1]);
-                        funcseq[i] = "W(" + v + ") = [" + SingRot(v + vals[1][i] + vals[0][i], i, j, k[0]) + "] + [" + SingRot(v + vals[1][i] + vals[0][i], i, j, k[1]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
-                        break;
-                }
-                break;
-            case 4:
-                switch (j)
-                {
-                    case 0:
-                        SingRot(D, i, j, k[0]);
-                        funccatch[0] = funcseq[i];
-                        SingRot(D, i, j, k[1]);
-                        funccatch[1] = funcseq[i];
-                        x += Mathf.Max(SingRot(D, i, j, k[0]), SingRot(D, i, j, k[1])) - D;
-                        funcseq[i] = "V(" + v + ") = " + v + " + max([" + SingRot(D , i, j, k[0]) + "], [" + SingRot(D , i, j, k[1]) + "]) - " + D + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
-                        break;
-                    case 1:
-                        x = Mathf.Max(SingRot(x, i, j, k[0]), SingRot(x, i, j, k[1])) + vals[0][i] - D;
-                        funcseq[i] = "V(" + v + ") = max([" + SingRot(v, i, j, k[0]) + "], [" + SingRot(v, i, j, k[1]) + "]) + " + vals[0][i] + " - " + D + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}]" + funccatch[0] + "\n[UltraStores #{" + moduleID + "}]" + funccatch[1];
-                        break;
-                    case 2:
-                        SingRot(SingRot(v, i, j, k[1]), i, j, k[0]);
-                        funccatch[2] = funcseq[i];
-                        SingRot(SingRot(v, i, j, k[0]), i, j, k[1]);
-                        funccatch[3] = funcseq[i];
-                        x = Mathf.Max(SingRot(SingRot(x, i, j, k[1]), i, j, k[0]), SingRot(SingRot(x, i, j, k[0]), i, j, k[1]));
-                        funcseq[i] = "V(" + v + ") = max([[" + SingRot(SingRot(v, i, j, k[1]), i, j, k[0]) + "]], [[" + SingRot(SingRot(v, i, j, k[0]), i, j, k[1]) + "]]) = " + x + " ≈ " + x % 365 + "\n[UltraStores #{" + moduleID + "}][" + funccatch[0] + "]\n[UltraStores #{" + moduleID + "}]" + funccatch[3] + "\n[UltraStores #{" + moduleID + "}][" + funccatch[1] + "]\n[UltraStores #{" + moduleID + "}]" + funccatch[2];
-                        break;
-                }
-                break;
+        }
+        return x % 365;
+    }
+
+    private int TripRot(int x, int i, int j, int[] k)
+    {
+        int v = x;
+        SingRot(v, i, j, k[0]);
+        funccatch[0] = funcseq[i];
+        SingRot(v, i, j, k[1]);
+        funccatch[1] = funcseq[i];
+        SingRot(v, i, j, k[2]);
+        funccatch[2] = funcseq[i];
+        if (k[3] == 0)
+        {
+            switch (j)
+            {
+                case 0:
+                    x = Mathf.Max(SingRot(x, i, j, k[0]), SingRot(x, i, j, k[1]), SingRot(x, i, j, k[2])) - 2 * D;
+                    funcseq[i] = "W(" + v + ") = max([" + SingRot(v, i, j, k[0]) + "], [" + SingRot(v, i, j, k[1]) + "], [" + SingRot(v, i, j, k[2]) + "]) - " + D + "*2 = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1] + "\n[UltraStores #" + moduleID + "]" + funccatch[2];
+                    break;
+                case 1:
+                    x = SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]) + SingRot(x, i, j, k[2]) - 3 * x;
+                    funcseq[i] = "W(" + v + ") = [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] + [" + SingRot(v, i, j, k[2]) + "] - " + v + "*3 = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1] + "\n[UltraStores #" + moduleID + "]" + funccatch[2];
+                    break;
+                case 2:
+                    x = SingRot(x, i, j, k[0]) + SingRot(x, i, j, k[1]) + SingRot(x, i, j, k[2]) - vals[0][i] - vals[1][i] - x;
+                    funcseq[i] = "W(" + v + ") =  [" + SingRot(v, i, j, k[0]) + "] + [" + SingRot(v, i, j, k[1]) + "] + [" + SingRot(v, i, j, k[2]) + "] - " + vals[0][i] + " - " + vals[1][i] + " - " + v + " = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1] + "\n[UltraStores #" + moduleID + "]" + funccatch[2];
+                    break;
+            }
+        }
+        else
+        {
+            switch (j)
+            {
+                case 0:
+                    x = Mathf.Min(SingRot(x, i, j, k[0]), SingRot(x, i, j, k[1]), SingRot(x, i, j, k[2])) + 2 * D;
+                    funcseq[i] = "V(" + v + ") = min([" + SingRot(v, i, j, k[0]) + "], [" + SingRot(v, i, j, k[1]) + "], [" + SingRot(v, i, j, k[2]) + "]) + " + D + "*2 = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1] + "\n[UltraStores #" + moduleID + "]" + funccatch[2];
+                    break;
+                case 1:
+                    x = 3 * x - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]) - SingRot(x, i, j, k[2]);
+                    funcseq[i] = "V(" + v + ") = " + v + "*3 - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] - [" + SingRot(v, i, j, k[2]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1] + "\n[UltraStores #" + moduleID + "]" + funccatch[2];
+                    break;
+                case 2:
+                    x = vals[0][i] + vals[1][i] + x - SingRot(x, i, j, k[0]) - SingRot(x, i, j, k[1]) - SingRot(x, i, j, k[2]);
+                    funcseq[i] = "V(" + v + ") = " + vals[0][i] + " + " + vals[1][i] + " + " + v + " - [" + SingRot(v, i, j, k[0]) + "] - [" + SingRot(v, i, j, k[1]) + "] - [" + SingRot(v, i, j, k[2]) + "] = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1] + "\n[UltraStores #" + moduleID + "]" + funccatch[2];
+                    break;
+            }
         }
         return x % 365;
     }
@@ -888,7 +1182,7 @@ public class UltraStoresScript : MonoBehaviour {
         {
             brends[i].material = buttoncols[8];
         }
-        for (int i = 0; i < 32; i++)
+        for (int i = 0; i < 64; i++)
         {
             if (moduleSolved == false)
             {
@@ -902,19 +1196,16 @@ public class UltraStoresScript : MonoBehaviour {
         for (int i = 0; i < 25; i++)
         {
             cube.transform.localPosition += new Vector3(0, 0, 0.1f);
-            for (int j = 0; j < 32; j++)
+            for (int j = 0; j < 64; j++)
             {
-                ufos[j].transform.localPosition += new Vector3(0.2f*oldpos[j][0] + 0.05f*oldpos[j][4] + 0.15f*oldpos[j][3], 0.2f*oldpos[j][1] + 0.1f*oldpos[j][4] + 0.05f*oldpos[j][3], 0.2f*oldpos[j][2] + 0.15f*oldpos[j][4] + 0.1f*oldpos[j][3]);
+                ufos[j].transform.localPosition += new Vector3(0.2f*oldpos[j][0] + 0.075f*oldpos[j][5] + 0.05f*oldpos[j][4] + 0.15f*oldpos[j][3], 0.2f*oldpos[j][1] + 0.15f*oldpos[j][5] + 0.1f*oldpos[j][4] + 0.05f*oldpos[j][3], 0.2f*oldpos[j][2] + 0.075f*oldpos[j][5] + 0.15f*oldpos[j][4] + 0.1f*oldpos[j][3]);
                 uforends[j].material.color += new Color32((byte)(gen[j][0] / 25), (byte)(gen[j][1] / 25), (byte)(gen[j][2] / 25), 0);
             }
             yield return new WaitForSeconds(0.01f);
         }
-        for (int j = 0; j < 32; j++)
+        for (int j = 0; j < 64; j++)
         {
-            for (int k = 0; k < 5; k++)
-            {
-                newpos[j][k] = oldpos[j][k];
-            }
+            newpos[j] = oldpos[j];
         }
         if (moduleSolved == false)
         {
@@ -929,12 +1220,9 @@ public class UltraStoresScript : MonoBehaviour {
         {
             if(i % 25 == 0)
             {
-                for(int j = 0; j < 32; j++)
+                for(int j = 0; j < 64; j++)
                 {
-                    for(int k = 0; k < 5; k++)
-                    {
-                        oldpos[j][k] = newpos[j][k];
-                    }
+                    oldpos[j] = newpos[j];
                 }
                 if (subwaiting == true)
                 {
@@ -944,7 +1232,7 @@ public class UltraStoresScript : MonoBehaviour {
                 }
                 else if (i < (stage + 3) * 25)
                 {
-                    for(int j = 0; j < 32; j++)
+                    for(int j = 0; j < 64; j++)
                     {
                         VectorMultiply(matrixlist[i / 25], oldpos[j], j);
                     }
@@ -957,13 +1245,61 @@ public class UltraStoresScript : MonoBehaviour {
             }
             else if(i < (stage + 3) * 25)
             {
-                for(int j = 0; j < 32; j++)
+                for(int j = 0; j < 64; j++)
                 {
-                    ufos[j].transform.localPosition += new Vector3(0.2f * (newpos[j][0] - oldpos[j][0]) + 0.05f * (newpos[j][4] - oldpos[j][4]) + 0.15f * (newpos[j][3] - oldpos[j][3]), 0.2f *(newpos[j][1] - oldpos[j][1]) + 0.1f * (newpos[j][4] - oldpos[j][4]) + 0.05f * (newpos[j][3] - oldpos[j][3]), 0.2f * (newpos[j][2] - oldpos[j][2]) + 0.15f * (newpos[j][4] - oldpos[j][4]) + 0.1f * (newpos[j][3] - oldpos[j][3]));
+                   ufos[j].transform.localPosition += new Vector3(0.2f * (newpos[j][0] - oldpos[j][0]) + 0.075f * (newpos[j][5] - oldpos[j][5]) + 0.05f * (newpos[j][4] - oldpos[j][4]) + 0.15f * (newpos[j][3] - oldpos[j][3]), 0.2f *(newpos[j][1] - oldpos[j][1]) + 0.15f * (newpos[j][5] - oldpos[j][5]) + 0.1f * (newpos[j][4] - oldpos[j][4]) + 0.05f * (newpos[j][3] - oldpos[j][3]), 0.2f * (newpos[j][2] - oldpos[j][2]) + 0.075f * (newpos[j][5] - oldpos[j][5]) + 0.15f * (newpos[j][4] - oldpos[j][4]) + 0.1f * (newpos[j][3] - oldpos[j][3]));
                 }
                 yield return new WaitForSeconds(0.04f);
             }
         }
+    }
+
+    private IEnumerator Recolour()
+    {
+        int[] rone = new int[3];
+        int[][] rtwo = new int[64][];
+        if (randrecol == false)
+        {
+            rone = new int[3] { Random.Range(15, 240), Random.Range(15, 240), Random.Range(15, 240) };
+            for (int i = 0; i < 64; i++)
+            {
+                rtwo[i] = new int[3] { Random.Range(-15, 16), Random.Range(-15, 16), Random.Range(-15, 16) };
+            }
+        }
+        else
+        {
+            rone = new int[3] { 0, 0, 0 };
+            for (int i = 0; i < 64; i++)
+            {
+                rtwo[i] = new int[3] { Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255) };
+            }
+        }
+        for (int i = 0; i < 50; i++)
+        {
+            if(i < 25)
+            {
+                for (int j = 0; j < 64; j++)
+                {
+                    uforends[j].material.color -= new Color32((byte)(gen[j][0]/25), (byte)(gen[j][1]/25), (byte)(gen[j][2]/25), 0);
+                }
+            }
+            else
+            {
+                for (int j = 0; j < 64; j++)
+                {
+                    uforends[j].material.color += new Color32((byte)((rone[0] + rtwo[j][0]) / 25), (byte)((rone[1] + rtwo[j][1]) / 25), (byte)((rone[2] + rtwo[j][2]) / 25), 0);
+                }
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+        for(int i = 0; i < 64; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                gen[i][j] = rone[j] + rtwo[i][j];
+            }
+        }
+        recol = false;
     }
 
     private IEnumerator StartSubmission()
@@ -977,9 +1313,9 @@ public class UltraStoresScript : MonoBehaviour {
         for (int i = 0; i < 25; i++)
         {
             cube.transform.localPosition -= new Vector3(0, 0, 0.1f);
-            for (int j = 0; j < 32; j++)
+            for (int j = 0; j < 64; j++)
             {
-                ufos[j].transform.localPosition -= new Vector3(0.2f * oldpos[j][0] + 0.05f * oldpos[j][4] + 0.15f * oldpos[j][3], 0.2f * oldpos[j][1] + 0.1f * oldpos[j][4] + 0.05f * oldpos[j][3], 0.2f * oldpos[j][2] + 0.15f * oldpos[j][4] + 0.1f * oldpos[j][3]);
+                ufos[j].transform.localPosition -= new Vector3(0.2f * oldpos[j][0] + 0.075f * oldpos[j][5] + 0.05f * oldpos[j][4] + 0.15f * oldpos[j][3], 0.2f * oldpos[j][1] + 0.15f * oldpos[j][5] + 0.1f * oldpos[j][4] + 0.05f * oldpos[j][3], 0.2f * oldpos[j][2] + 0.075f * oldpos[j][5] + 0.15f * oldpos[j][4] + 0.1f * oldpos[j][3]);
                 uforends[j].material.color -= new Color32((byte)(gen[j][0] / 25), (byte)(gen[j][1] / 25), (byte)(gen[j][2] / 25), 0);
             }
             yield return new WaitForSeconds(0.01f);
@@ -1277,7 +1613,7 @@ public class UltraStoresScript : MonoBehaviour {
     }
 
 #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"!{0} start/submit [presses centre button] RKMCWB [presses coloured buttons; K = black] | !{0} cycle [shows colours of buttons in clockwise order]";
+    private readonly string TwitchHelpMessage = @"!{0} start/submit [presses centre button] | !{0} equalise/randomise [changes disc colours] | !{0} RKMCWB [presses coloured buttons; K = black] | !{0} cycle [shows colours of buttons in clockwise order]";
 #pragma warning restore 414
 
     public IEnumerator ProcessTwitchCommand(string command)
@@ -1298,6 +1634,30 @@ public class UltraStoresScript : MonoBehaviour {
             else
             {
                 yield return "sendtochaterror UltraStores is not in input mode. Use \"start\" to initiate input mode.";
+            }
+        }
+        else if (Regex.IsMatch(command, @"^\s*equalise\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            if (submissable == false && subwaiting == false)
+            {
+                yield return null;
+                buttons[0].OnInteract();
+            }
+            else
+            {
+                yield return "sendtochaterror Cannot equalise discs in input mode.";
+            }
+        }
+        else if (Regex.IsMatch(command, @"^\s*randomise\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
+        {
+            if (submissable == false && subwaiting == false)
+            {
+                yield return null;
+                buttons[4].OnInteract();
+            }
+            else
+            {
+                yield return "sendtochaterror Cannot randomise discs in input mode.";
             }
         }
         else if (Regex.IsMatch(command, @"^\s*start\s*$", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant))
