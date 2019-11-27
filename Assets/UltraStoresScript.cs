@@ -243,7 +243,7 @@ public class UltraStoresScript : MonoBehaviour {
                                                                          new List<string> { "(ZV, XY)", "(ZV, XW)", "(ZV, XU)", "(ZV, YW)", "(ZV, YU)", "(ZV, WU)", "(ZV, YX)", "(ZV, WX)", "(ZV, WY)", "(ZV, UX)", "(ZV, UY)", "(ZV, UW)"},
                                                                          new List<string> { "(WV, XY)", "(WV, XZ)", "(WV, XU)", "(WV, YZ)", "(WV, YU)", "(WV, ZU)", "(WV, YX)", "(WV, ZX)", "(WV, UX)", "(WV, ZY)", "(WV, UY)", "(WV, UZ)"},
                                                                          new List<string> { "(XU, YZ)", "(XU, YW)", "(XU, YV)", "(XU, ZW)", "(XU, ZV)", "(XU, WV)", "(XU, ZY)", "(XU, WY)", "(XU, WZ)", "(XU, VY)", "(XU, VZ)", "(XU, VW)"},
-                                                                         new List<string> { "(YU, XZ)", "(YU, XW)", "(YU, XV)", "(YU, ZW)", "(YU, ZV)", "(YU, WV)", "(YU, ZX)", "(YU, WX)", "(YU, WZ)", "(YU, VY)", "(YU, VZ)", "(YU, VW)"},
+                                                                         new List<string> { "(YU, XZ)", "(YU, XW)", "(YU, XV)", "(YU, ZW)", "(YU, ZV)", "(YU, WV)", "(YU, ZX)", "(YU, WX)", "(YU, WZ)", "(YU, VX)", "(YU, VZ)", "(YU, VW)"},
                                                                          new List<string> { "(ZU, XY)", "(ZU, YW)", "(ZU, YV)", "(ZU, XW)", "(ZU, XV)", "(ZU, WV)", "(ZU, YX)", "(ZU, WY)", "(ZU, WX)", "(ZU, VX)", "(ZU, VY)", "(ZU, VW)"},
                                                                          new List<string> { "(WU, XY)", "(WU, XZ)", "(WU, XV)", "(WU, YZ)", "(WU, YV)", "(WU, ZV)", "(WU, YX)", "(WU, ZX)", "(WU, ZY)", "(WU, VX)", "(WU, VY)", "(WU, VZ)"},
                                                                          new List<string> { "(VU, XY)", "(VU, XZ)", "(VU, XW)", "(VU, YZ)", "(VU, YW)", "(VU, ZW)", "(VU, YX)", "(VU, ZX)", "(VU, WX)", "(VU, ZY)", "(VU, WY)", "(VU, WZ)"} },
@@ -631,7 +631,7 @@ public class UltraStoresScript : MonoBehaviour {
                         break;
                     default:
                         x = (2 * x) + Mathf.Abs(vals[1][i]) + Mathf.Abs(vals[0][i]) - (5 * (int)Mathf.Pow(i + 1, 3));
-                        funcseq[i] = "YW(" + v + ") = " + v + "*2" + " + |" + vals[1][i] + "| + |" + vals[0][i] + "| - 5*(" + (i + 1) + "^3) = " + x + " ≈ " + (x + 7300) % 365;
+                        funcseq[i] = "YW(" + v + ") = " + v + "*2" + " + |" + vals[1][i] + "| + |" + vals[0][i] + "| - 5*(" + (i + 1) + "^3) = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
@@ -800,7 +800,7 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "VU(" + v + ") = (" + v + " - " + vals[0][i] + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = (i + 1) * (x - vals[0][i] + vals[1][0]);
+                        x = (i + 1) * (x - vals[0][i] + vals[1][i]);
                         funcseq[i] = "VU(" + v + ") = (" + v + " - " + vals[0][i] + " + " + vals[1][i] + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -1005,7 +1005,7 @@ public class UltraStoresScript : MonoBehaviour {
                         break;
                     default:
                         x = 2 * x - 365 + Mathf.Abs(vals[0][i]) - Mathf.Abs(vals[1][i]);
-                        funcseq[i] = "UY(" + v + ") = " + v + "*2 + 365 - |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
+                        funcseq[i] = "UY(" + v + ") = " + v + "*2 - 365 - |" + vals[0][i] + "| - |" + vals[1][i] + "| = " + x + " ≈ " + x % 365;
                         break;
                 }
                 break;
@@ -1055,7 +1055,7 @@ public class UltraStoresScript : MonoBehaviour {
                         funcseq[i] = "UV(" + v + ") = (" + v + " - " + vals[0][i] + " - " + D + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                     default:
-                        x = (i + 1) * (x - vals[0][i] - vals[1][0]);
+                        x = (i + 1) * (x - vals[0][i] - vals[1][i]);
                         funcseq[i] = "UV(" + v + ") = (" + v + " - " + vals[0][i] + " - " + vals[1][i] + ")*" + (i + 1) + " = " + x + " ≈ " + x % 365;
                         break;
                 }
@@ -1086,7 +1086,7 @@ public class UltraStoresScript : MonoBehaviour {
                         break;
                     case 2:
                         x = 4 * D - Mathf.Abs(SingRot(x, i, j, k[0])) - Mathf.Abs(SingRot(x, i, j, k[1]));
-                        funcseq[i] = "X(" + v + ") = 4*" + D + " - |[" + SingRot(v, i, j, k[0]) + "]| + |[" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
+                        funcseq[i] = "X(" + v + ") = 4*" + D + " - |[" + SingRot(v, i, j, k[0]) + "]| - |[" + SingRot(v, i, j, k[1]) + "]| = " + x + " ≈ " + x % 365 + "\n[UltraStores #" + moduleID + "]" + funccatch[0] + "\n[UltraStores #" + moduleID + "]" + funccatch[1];
                         break;
                 }
                 break;
